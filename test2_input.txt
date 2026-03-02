@@ -1,0 +1,2 @@
+while (temp > 98.6)
+result = temp + 1.50;

@@ -1,0 +1,14 @@
+Output:
+token        lexeme
+keyword      if
+operator     (
+identifier   count
+operator     !=
+integer      10
+operator     )
+identifier   sum
+operator     =
+identifier   sum
+operator     +
+identifier   count
+operator     ;

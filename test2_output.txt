@@ -1,0 +1,14 @@
+Output:
+token        lexeme
+keyword      while
+operator     (
+identifier   temp
+operator     >
+real         98.6
+operator     )
+identifier   result
+operator     =
+identifier   temp
+operator     +
+real         1.50
+operator     ;

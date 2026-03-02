@@ -11,8 +11,8 @@ import lexer
 
 
 def main():
-    input_file = "test1_input.txt" 
-    output_file = "test1_output.txt" 
+    input_file = "test3_input.txt" 
+    output_file = "test3_output.txt" 
 
     # Open and read the file
     try:
