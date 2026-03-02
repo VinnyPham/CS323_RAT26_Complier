@@ -1,1 +1,12 @@
-while (fahr <= upper) a = 23.00; /* this is a sample */
+Output:
+token        lexeme
+keyword      while
+operator     (
+identifier   fahr
+operator     <=
+identifier   upper
+operator     )
+identifier   a
+operator     =
+real         23.00
+operator     ;

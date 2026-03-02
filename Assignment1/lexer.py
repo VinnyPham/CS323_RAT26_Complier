@@ -13,10 +13,7 @@ import fsm
 # Output:
 #       Returns Dict: token - indentiy
 #--------------------------------------------------------------
-def lexer(code):
-    tokens = []
-    i = 0
-
+def lexer(code, i):
     while i < len(code):
         char = code[i]
 
@@ -29,7 +26,7 @@ def lexer(code):
         if code[i:i+2] == '/*':
             end = code.find('*/', i + 2)
             if end == -1:
-                break
+                return None, len(code)
             i = end + 2
             continue
 
@@ -37,58 +34,56 @@ def lexer(code):
         if code[i:i+2] == '//' or code[i] == '#':
             end = code.find('\n', i)
             if end == -1:
-                break
+                return None, len(code)
             i = end + 1
             continue
 
         # operators (<=, >=, ==, !=)
         if i + 1 < len(code) and fsm.is_operator(code[i:i+2]):
-            tokens.append({"token": "operator", "lexeme": code[i:i+2]})
-            i += 2
-            continue
+            return {"token": "operator", "lexeme": code[i:i+2]}, i + 2
 
         # operators (+, -, *, /, %, <, >, =)
         if fsm.is_operator(char): 
-            tokens.append({"token": "operator", "lexeme": char})
-            i += 1
-            continue
+            return {"token": "operator", "lexeme": char}, i + 1
 
         # separator (), {}, [], :, ;, ,
         if fsm.is_separator(char):
-            tokens.append({"token": "separator", "lexeme": char})
-            i += 1
-            continue
+            return {"token": "operator", "lexeme": char}, i + 1
 
-        # first letter
+        # identifiers / keywords
         if char.isalpha():
             j = i
-            while j < len(code) and (code[j].isalpha() or code[j].isdigit() or code[j] == '_'):
+            while j < len(code) and (code[j].isalnum() or code[j] == '_'):
                 j += 1
+                
             lexeme = code[i:j]
+            
             if fsm.is_keyword(lexeme):
-                tokens.append({"token": "keyword", "lexeme": lexeme})
+                return {"token": "keyword", "lexeme": lexeme}, j
             else:
-                tokens.append({"token": "identifier", "lexeme": lexeme})
-            i = j
-            continue
+                return {"token": "identifier", "lexeme": lexeme}, j
 
-        # first number
+        # numbers (int / real) 
         if char.isdigit():
             j = i
-            while j < len(code) and (code[j].isdigit() or code[j] == '.'):
+            has_dot = False
+            
+            while j < len(code) and (code[j].isdigit() or (code[j] == '.' and not has_dot)):
+                if code[j] == '.':
+                    has_dot = True
                 j += 1
+                
             lexeme = code[i:j]
+            
             if fsm.is_real(lexeme):
-                tokens.append({"token": "real", "lexeme": lexeme})
+                return {"token": "real", "lexeme": lexeme}, j
             elif fsm.is_integer(lexeme):
-                tokens.append({"token": "integer", "lexeme": lexeme})
+                return {"token": "integer", "lexeme": lexeme}, j
             else:
-                tokens.append({"token": "unknown", "lexeme": lexeme})
-            i = j
-            continue
+                return {"token": "unknown", "lexeme": lexeme}, j
 
         # unknown
-        tokens.append({"token": "unknown", "lexeme": char})
-        i += 1
+        return {"token": "unknown", "lexeme": char}, i + 1
 
-    return tokens
+    # End of file
+    return None, i
