@@ -1,6 +1,7 @@
 # -------------------------------------------------------------
 # Define keywords, operators, separators
 # -------------------------------------------------------------
-KEYWORDS = {"while", "if", "else", "int", "real", "begin", "end", "repeat"}
+KEYWORDS = {"integer", "real", "boolean", "if", "otherwise", "fi", 
+            "while", "return", "read", "write", "function"}
 OPERATORS = {"=", "+", "-", "*", "/", "<", "<=", ">", ">=", "==", "!="}
-SEPARATORS = {";", "(", ")", "{", "}"}
+SEPARATORS = {"\"", ":", ";", ",", "(", ")", "{", "}", "[", "]", "@"}

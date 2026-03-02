@@ -1,2 +1,16 @@
-while (temp > 98.6)
-result = temp + 1.50;
+/* Test Case 2: Medium file */
+@
+@ 
+integer temp, count, sum;
+@
+read (temp, count);
+sum = 0;
+while (count > 0) {
+    sum = sum + temp;
+    count = count - 1;
+}
+if (sum >= 500)
+    write(sum);
+else
+    write(count);
+@

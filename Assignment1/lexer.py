@@ -48,7 +48,7 @@ def lexer(code, i):
 
         # separator (), {}, [], :, ;, ,
         if fsm.is_separator(char):
-            return {"token": "operator", "lexeme": char}, i + 1
+            return {"token": "separator", "lexeme": char}, i + 1
 
         # identifiers / keywords
         if char.isalpha():

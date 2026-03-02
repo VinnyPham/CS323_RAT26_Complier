@@ -1,2 +1,28 @@
-if (count != 10)
-sum = sum + count;
+/* Test Case 3: Large file */
+@
+function convert (fahr integer)
+{
+    return 5 * (fahr - 32) / 9;
+}
+@
+integer low, high, step, celsius, sum, i;
+@
+read (low, high, step);
+celsius = 0;
+sum = 0;
+while (low <= high) {
+    celsius = convert(low);
+    write(celsius);
+    low = low + step;
+}
+for (i = 1; i <= 10; i = i + 1) {
+    sum = sum + i;
+}
+write(sum);
+if (celsius < 0)
+    write("Freezing");
+else if (celsius == 100)
+    write("Boiling");
+else
+    write("Normal");
+@
