@@ -11,7 +11,7 @@ import fsm
 # Process the string into tokens. 
 #
 # Output:
-#       Returns Dict: token - indentiy
+#       Returns Dict: token - indentiy, Int: i 
 #--------------------------------------------------------------
 def lexer(code, i):
     while i < len(code):
