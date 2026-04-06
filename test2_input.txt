@@ -1,9 +1,9 @@
 /* Test Case 2: Medium file */
 @
-@ 
+@
 integer temp, count, sum;
 @
-read (temp, count);
+read(temp, count);
 sum = 0;
 while (count > 0) {
     sum = sum + temp;
@@ -11,6 +11,7 @@ while (count > 0) {
 }
 if (sum >= 500)
     write(sum);
-else
+otherwise
     write(count);
+fi
 @

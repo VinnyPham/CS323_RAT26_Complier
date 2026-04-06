@@ -7,22 +7,25 @@ function convert (fahr integer)
 @
 integer low, high, step, celsius, sum, i;
 @
-read (low, high, step);
+read(low, high, step);
 celsius = 0;
 sum = 0;
+i = 1;
 while (low <= high) {
     celsius = convert(low);
     write(celsius);
     low = low + step;
 }
-for (i = 1; i <= 10; i = i + 1) {
+while (i <= 10) {
     sum = sum + i;
+    i = i + 1;
 }
 write(sum);
 if (celsius < 0)
-    write("Freezing");
-else if (celsius == 100)
-    write("Boiling");
-else
-    write("Normal");
+    write(celsius);
+otherwise
+    if (celsius == 100)
+        write(celsius);
+    fi
+fi
 @
