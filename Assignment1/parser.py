@@ -6,7 +6,8 @@
 # grammar rules.
 # -------------------------------------------------------------
 import sys
-import lexer 
+import lexer
+from symbol_table import add_identifier
 
 # -------------------------------------------------------------
 # Parser Class
@@ -220,24 +221,29 @@ class Parser:
     # <Declaration> -> <Qualifier> <IDs> ;
     def parse_declaration(self):
         self._print_rule("<Declaration> -> <Qualifier> <IDs> ;")
+        # Stores data type for use in symbol table
+        data_type = self._current_lexeme()
         self.parse_qualifier()
-        self.parse_ids()
+        self.parse_ids(declare=True, data_type=data_type)
         self._match(";")
  
     # -- IDs ---------------------------------------------------
     
     # <IDs> -> <Identifier> <IDs Prime>
-    def parse_ids(self):
+    def parse_ids(self, declare=False, data_type=None):
         self._print_rule("<IDs> -> <Identifier> <IDs Prime>")
+        # Only adds identifier if run from parse_declaration function
+        if declare:
+            add_identifier(self._current_lexeme(), data_type)
         self._match_token("identifier")
-        self.parse_ids_prime()
+        self.parse_ids_prime(declare, data_type=data_type)
  
     # <IDs Prime> -> , <IDs> | <Empty>
-    def parse_ids_prime(self):
+    def parse_ids_prime(self, declare=False, data_type=None):
         self._print_rule("<IDs Prime> -> , <IDs> | <Empty>")
         if self.token and self._current_lexeme() == ",":
             self._match(",")
-            self.parse_ids()
+            self.parse_ids(declare, data_type)
         else:
             self.parse_empty()
  
