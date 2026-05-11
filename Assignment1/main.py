@@ -1,11 +1,11 @@
 # -------------------------------------------------------------
-# Project: CPSC 323 – Assignment 2
+# Project: CPSC 323 – Assignment 3
 # -------------------------------------------------------------
 # Programmers: Vinny Pham, Brandon Schaefer, Vanna Cervania
 # Titan Email: vinnypham327@csu.fullerton.edu
 #              schaeferbrandon@csu.fullerton.edu
 #              vannaflocervania@csu.fullerton.edu
-# Date: April 05, 2026
+# Date: May 10, 2026
 # -------------------------------------------------------------
 import parser
 from symbol_table import print_symbol_table
