@@ -1,116 +1,53 @@
-	<Rat26S> -> @ <Opt Function Definitions> @ <Opt Declaration List> @ <Statement List> @
 	Token: separator     Lexeme: @
-	<Opt Function Definitions> -> <Function Definitions> | <Empty>
-	<Empty> -> e
 	Token: separator     Lexeme: @
-	<Opt Declaration List> -> <Declaration List> | <Empty>
-	<Declaration List> -> <Declaration> <Declaration List Prime>
-	<Declaration> -> <Qualifier> <IDs> ;
-	<Qualifier> -> integer | boolean | real
 	Token: keyword       Lexeme: integer
-	<IDs> -> <Identifier> <IDs Prime>
 	Token: identifier    Lexeme: a
-	<IDs Prime> -> , <IDs> | <Empty>
 	Token: separator     Lexeme: ,
-	<IDs> -> <Identifier> <IDs Prime>
 	Token: identifier    Lexeme: b
-	<IDs Prime> -> , <IDs> | <Empty>
-	<Empty> -> e
 	Token: separator     Lexeme: ;
-	<Declaration List Prime> -> <Declaration List> | <Empty>
-	<Empty> -> e
 	Token: separator     Lexeme: @
-	<Statement List> -> <Statement> <Statement List Prime>
-	<Statement> -> <Compound> | <Assign> | <If> | <Return> | <Print> | <Scan> | <While>
-	<Assign> -> <Identifier> = <Expression> ;
 	Token: identifier    Lexeme: a
 	Token: operator      Lexeme: =
-	<Expression> -> <Term> <Expression Prime>
-	<Term> -> <Factor> <Term Prime>
-	<Factor> -> - <Primary> | <Primary>
-	<Primary> -> <Identifier> <Primary Prime> | <Integer> | <Real> | ( <Expression> ) | true | false
 	Token: integer       Lexeme: 23
-	<Term Prime> -> * <Factor> <Term Prime> | / <Factor> <Term Prime> | <Empty>
-	<Empty> -> e
-	<Expression Prime> -> + <Term> <Expression Prime> | - <Term> <Expression Prime> | <Empty>
-	<Empty> -> e
 	Token: separator     Lexeme: ;
-	<Statement List Prime> -> <Statement List> | <Empty>
-	<Statement List> -> <Statement> <Statement List Prime>
-	<Statement> -> <Compound> | <Assign> | <If> | <Return> | <Print> | <Scan> | <While>
-	<Assign> -> <Identifier> = <Expression> ;
 	Token: identifier    Lexeme: b
 	Token: operator      Lexeme: =
-	<Expression> -> <Term> <Expression Prime>
-	<Term> -> <Factor> <Term Prime>
-	<Factor> -> - <Primary> | <Primary>
-	<Primary> -> <Identifier> <Primary Prime> | <Integer> | <Real> | ( <Expression> ) | true | false
 	Token: identifier    Lexeme: a
-	<Primary Prime> -> ( <IDs> ) | <Empty>
-	<Empty> -> e
-	<Term Prime> -> * <Factor> <Term Prime> | / <Factor> <Term Prime> | <Empty>
-	<Empty> -> e
-	<Expression Prime> -> + <Term> <Expression Prime> | - <Term> <Expression Prime> | <Empty>
 	Token: operator      Lexeme: +
-	<Term> -> <Factor> <Term Prime>
-	<Factor> -> - <Primary> | <Primary>
-	<Primary> -> <Identifier> <Primary Prime> | <Integer> | <Real> | ( <Expression> ) | true | false
 	Token: integer       Lexeme: 1
-	<Term Prime> -> * <Factor> <Term Prime> | / <Factor> <Term Prime> | <Empty>
-	<Empty> -> e
-	<Expression Prime> -> + <Term> <Expression Prime> | - <Term> <Expression Prime> | <Empty>
-	<Empty> -> e
 	Token: separator     Lexeme: ;
-	<Statement List Prime> -> <Statement List> | <Empty>
-	<Statement List> -> <Statement> <Statement List Prime>
-	<Statement> -> <Compound> | <Assign> | <If> | <Return> | <Print> | <Scan> | <While>
-	<If> -> if ( <Condition> ) <Statement> <If Prime>
 	Token: keyword       Lexeme: if
 	Token: separator     Lexeme: (
-	<Condition> -> <Expression> <Relop> <Expression>
-	<Expression> -> <Term> <Expression Prime>
-	<Term> -> <Factor> <Term Prime>
-	<Factor> -> - <Primary> | <Primary>
-	<Primary> -> <Identifier> <Primary Prime> | <Integer> | <Real> | ( <Expression> ) | true | false
 	Token: identifier    Lexeme: b
-	<Primary Prime> -> ( <IDs> ) | <Empty>
-	<Empty> -> e
-	<Term Prime> -> * <Factor> <Term Prime> | / <Factor> <Term Prime> | <Empty>
-	<Empty> -> e
-	<Expression Prime> -> + <Term> <Expression Prime> | - <Term> <Expression Prime> | <Empty>
-	<Empty> -> e
-	<Relop> -> == | != | > | < | <= | >=
 	Token: operator      Lexeme: !=
-	<Expression> -> <Term> <Expression Prime>
-	<Term> -> <Factor> <Term Prime>
-	<Factor> -> - <Primary> | <Primary>
-	<Primary> -> <Identifier> <Primary Prime> | <Integer> | <Real> | ( <Expression> ) | true | false
 	Token: integer       Lexeme: 0
-	<Term Prime> -> * <Factor> <Term Prime> | / <Factor> <Term Prime> | <Empty>
-	<Empty> -> e
-	<Expression Prime> -> + <Term> <Expression Prime> | - <Term> <Expression Prime> | <Empty>
-	<Empty> -> e
 	Token: separator     Lexeme: )
-	<Statement> -> <Compound> | <Assign> | <If> | <Return> | <Print> | <Scan> | <While>
-	<Return> -> return <Return Prime>
 	Token: keyword       Lexeme: return
-	<Return Prime> -> ; | <Expression> ;
-	<Expression> -> <Term> <Expression Prime>
-	<Term> -> <Factor> <Term Prime>
-	<Factor> -> - <Primary> | <Primary>
-	<Primary> -> <Identifier> <Primary Prime> | <Integer> | <Real> | ( <Expression> ) | true | false
 	Token: identifier    Lexeme: b
-	<Primary Prime> -> ( <IDs> ) | <Empty>
-	<Empty> -> e
-	<Term Prime> -> * <Factor> <Term Prime> | / <Factor> <Term Prime> | <Empty>
-	<Empty> -> e
-	<Expression Prime> -> + <Term> <Expression Prime> | - <Term> <Expression Prime> | <Empty>
-	<Empty> -> e
 	Token: separator     Lexeme: ;
-	<If Prime> -> otherwise <Statement> fi | fi
 	Token: keyword       Lexeme: fi
-	<Statement List Prime> -> <Statement List> | <Empty>
-	<Empty> -> e
 	Token: separator     Lexeme: @
+
+Instruction Table
+Address   Operator      Operand
+1         PUSHI         23
+2         POPM          10000
+3         PUSHM         10000
+4         PUSHI         1
+5         ADD           nil
+6         POPM          10001
+7         PUSHM         10001
+8         PUSHI         0
+9         NEQ           nil
+10        JUMPZ         13
+11        PUSHM         10001
+12        RET           nil
 ============================================================
 Parsing completed successfully.
+
+Symbol Table
+Identifier	MemoryLocation	Type
+a           10000           integer   
+b           10001           integer   
+============================================================
+Machine code completed successfully.
